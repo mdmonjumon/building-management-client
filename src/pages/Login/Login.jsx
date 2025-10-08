@@ -37,8 +37,8 @@ const Login = () => {
             </fieldset>
           </form>
           <SocialLogin title="Login"></SocialLogin>
-          <p className="text-center">
-            Don't have an account? <Link to="/signup">Sign up</Link>
+          <p className="text-center text-base">
+            Don't have an account? <Link to="/signup" className="text-[#681DA8]">Sign up</Link>
           </p>
         </div>
       </div>
