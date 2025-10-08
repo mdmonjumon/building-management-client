@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 import { CgMenuGridR, CgProfile } from "react-icons/cg";
+import NavigationLink from "../NavigationLink";
 import { Link } from "react-router-dom";
-import NavigationLink from "./NavigationLink";
-import { FaHome } from "react-icons/fa";
-import logo from "../../assets/logo.png";
+import logo from "../../../assets/logo.png";
+import "../Navbar/navbar.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { user, signOutUser } = useAuth();
+
   return (
     <div className="bg-[#9ba2ac8f]">
       <div className="navbar container mx-auto">
@@ -43,11 +46,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-5">
             <li>
-              <NavigationLink
-                label="Home"
-                address="/"
-                icon={FaHome}
-              ></NavigationLink>
+              <NavigationLink label="Home" address="/"></NavigationLink>
             </li>
             <li>
               <NavigationLink
@@ -58,19 +57,42 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end relative">
-          <button onClick={() => setOpen(!open)}>
-            <Link to={"/signup"}>
+          <div className="cursor-pointer" onClick={() => setOpen(!open)}>
+            {user && user?.email ? (
+              <img
+                className="w-12 h-12 size-full object-cover rounded-full"
+                src={user?.photoURL}
+                alt="Profile image"
+              />
+            ) : (
               <CgProfile size={40} />
-            </Link>
-          </button>
+            )}
+          </div>
           <div
             className={`${
               open ? "" : "hidden"
-            } flex flex-col gap-2 bg-white p-5 shadow rounded absolute top-15 lg:-right-9`}
+            } flex flex-col gap-2 bg-white px-5 py-2 shadow rounded absolute top-15 lg:-right-9`}
           >
-            <span>{"name"}</span>
-            <span>{"dashboard"}</span>
-            <span>{"logout"}</span>
+            {user && user.email ? (
+              <ul className="space-y-2 navLink">
+                <li className="pointer-events-none">{user?.displayName}</li>
+                <li>
+                  <Link to="/signup">Dashboard</Link>
+                </li>
+                <li>
+                  <button onClick={signOutUser}>Logout</button>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navLink">
+                <li>
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </div>

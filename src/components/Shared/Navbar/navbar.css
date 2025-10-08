@@ -1,0 +1,15 @@
+.navLink li{
+    padding: 8px 20px;
+    font-size: large;
+}
+.navLink li:hover{
+    background-color: gray;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+.navLink li>button{
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
