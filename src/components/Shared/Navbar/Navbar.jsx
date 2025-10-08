@@ -11,7 +11,7 @@ const Navbar = () => {
   const { user, signOutUser } = useAuth();
 
   return (
-    <div className="bg-[#9ba2ac8f]">
+    <div className="bg-[#9ba2ac8f] fixed top-0 z-50 w-full">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           {/* dropdown menu */}
@@ -36,11 +36,11 @@ const Navbar = () => {
           </div>
           <div className="flex justify-center items-center ml-3 lg:ml-16">
             <img
-              className="w-16 h-16 size-full object-cover hidden lg:flex"
+              className="w-16 h-16 size-full object-cover hidden lg:flex rounded-full mr-5"
               src={logo}
               alt=""
             />
-            <Link className="btn btn-ghost text-xl">Building Management</Link>
+            <Link className="text-xl">NZCONDOS <br /> APARTMENTS</Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

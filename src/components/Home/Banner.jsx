@@ -5,6 +5,9 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+// motion
+import { motion } from "motion/react";
 // import slider images
 import image0 from "../../assets/banner/home.jpg";
 import image1 from "../../assets/banner/home1.jpg";
@@ -48,7 +51,7 @@ const Banner = () => {
         effect={"fade"}
         navigation={false}
         autoplay={{
-          delay: 5000,
+          delay: 10000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -61,12 +64,19 @@ const Banner = () => {
           <SwiperSlide key={index}>
             <div className="absolute z-10 w-full h-full bg-black/30 flex justify-center items-center">
               <div className="text-white text-center space-y-5 p-8 w-full">
-                <h2 className="text-xl md:text-3xl font-semibold">{bannerInfo?.title}</h2>
+                <h2 className="text-xl md:text-3xl font-semibold">
+                  {bannerInfo?.title}
+                </h2>
                 <p className="text-lg font-medium">{bannerInfo?.intro}</p>
               </div>
             </div>
-            <img
-              className="lg:h-[700px] w-full size-full object-cover"
+            <motion.img
+              initial={{ scale: 1 }}
+              animate={{
+                scale: [1, 1.2, 1],
+              }}
+              transition={{ease: "easeInOut", repeat: Infinity, duration: 30 }}
+              className="lg:h-[800px] w-full size-full object-cover"
               src={bannerInfo?.image}
             />
           </SwiperSlide>
@@ -77,4 +87,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
