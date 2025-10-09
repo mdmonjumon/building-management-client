@@ -57,7 +57,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end relative">
-          <div className="cursor-pointer" onClick={() => setOpen(!open)}>
+          <div className="cursor-pointer button-border" onClick={() => setOpen(!open)}>
             {user && user?.email ? (
               <img
                 className="w-12 h-12 size-full object-cover rounded-full"
@@ -65,7 +65,7 @@ const Navbar = () => {
                 alt="Profile image"
               />
             ) : (
-              <CgProfile size={40} />
+              <CgProfile size={48} />
             )}
           </div>
           <div

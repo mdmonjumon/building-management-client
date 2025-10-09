@@ -1,2 +1,20 @@
+/* lato google font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
+
+.roboto-font {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+
+body{
+    font-family: roboto-font;
+}
+
+
+
+@keyframes spin-border {
+  100% { transform: rotate(360deg); }
+}

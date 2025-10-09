@@ -64,7 +64,6 @@ const AuthProviders = ({ children }) => {
         const { data } = await axiosPublic.post("/jwt", {
           email: currentUser?.email,
         });
-
         localStorage.setItem("token", data?.token);
         setLoading(false);
       } else {
