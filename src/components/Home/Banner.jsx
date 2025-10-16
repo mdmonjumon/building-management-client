@@ -15,6 +15,7 @@ import image2 from "../../assets/banner/home2.jpg";
 import image3 from "../../assets/banner/home3.jpg";
 
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
+import AnimatedButton from "../Shared/Navbar/AnimatedButton";
 
 const Banner = () => {
   //   const images = [image0, image1, image2, image3];
@@ -45,7 +46,7 @@ const Banner = () => {
     },
   ];
   return (
-    <div>
+    <div className="mt-18 md:mt-20">
       <Swiper
         spaceBetween={30}
         effect={"fade"}
@@ -63,30 +64,14 @@ const Banner = () => {
         {bannersInfo.map((bannerInfo, index) => (
           <SwiperSlide key={index}>
             <div className="absolute z-10 w-full h-full bg-black/30 flex justify-center items-center">
-              <div className="text-white text-center space-y-5 p-8 w-full">
+              <div className="text-white text-center space-y-5 p-8 w-full flex flex-col items-center justify-center">
                 <h2 className="text-xl md:text-5xl font-semibold">
                   {bannerInfo?.title}
                 </h2>
-                <p className="text-2xl font-normal">{bannerInfo?.intro}</p>
+                <p className="text-2xl font-normal hidden md:flex">{bannerInfo?.intro}</p>
 
-                <div className="flex justify-center items-center">
-                  <div
-                    className="relative bg-gradient-to-b from-slate-700 to-slate-800 h-[70px] w-[200px] overflow-hidden rounded-lg
-                before:bg-[conic-gradient(from_0deg,rgba(250,0,183,0.9)_0deg,rgba(81,180,253,0.9)_180deg,rgba(255,0,183,0.9)_360deg)]
-                before:absolute
-                before:h-[350%]
-                before:w-[150%]
-                before:left-[-25%]
-                before:top-[-125%]
-                before:content-['']
-                before:animate-[spin-border_3s_linear_infinite]
-                "
-                  >
-                    <div className="absolute h-[calc(100%-6px)] w-[calc(100%-6px)] top-[3px] left-[3px] content-center bg-gradient-to-b from-slate-800 to-slate-900 rounded-lg text-lg font-semibold cursor-pointer uppercase">
-                      take a tour
-                    </div>
-                  </div>
-                </div>
+                <AnimatedButton label="Take a Tour"></AnimatedButton>
+
               </div>
             </div>
             <motion.img

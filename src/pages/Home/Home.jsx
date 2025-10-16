@@ -1,19 +1,20 @@
-import React from 'react';
-import Container from '../../components/Shared/Container';
-import Banner from '../../components/Home/Banner';
+import Banner from "../../components/Home/Banner";
+import AboutBuilding from "../../components/Home/AboutBuilding";
+import VisitUs from "../../components/Home/VisitUs";
+import Container from "../../components/Shared/Container";
 
 const Home = () => {
-    return (
-        <div>
-            <Banner></Banner>
+  return (
+    <div>
+      <Banner></Banner>
 
-            <Container>
+      <AboutBuilding></AboutBuilding>
 
-
-            
-            </Container>
-        </div>
-    );
+      <Container>
+        <VisitUs></VisitUs>
+      </Container>
+    </div>
+  );
 };
 
 export default Home;
