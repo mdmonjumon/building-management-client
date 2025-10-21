@@ -57,10 +57,16 @@ const AuthProviders = ({ children }) => {
       setUser(currentUser);
       if (currentUser?.email) {
         if (postUser) {
-          // fetch request to save user info in db
+          // requested to save user info in db
+          const userInfo = {
+            name: currentUser?.displayName,
+            email: currentUser?.email,
+            photo: currentUser?.photoURL,
+          };
+          await axiosPublic.post("users", userInfo);
         }
 
-        // request for create a token
+        // request to server for create a jwt token
         const { data } = await axiosPublic.post("/jwt", {
           email: currentUser?.email,
         });
