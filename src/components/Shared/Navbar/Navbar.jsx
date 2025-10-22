@@ -77,7 +77,7 @@ const Navbar = () => {
               <ul className="space-y-2 navLink">
                 <li className="pointer-events-none">{user?.displayName}</li>
                 <li>
-                  <Link to="/signup">Dashboard</Link>
+                  <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li>
                   <button onClick={signOutUser}>Logout</button>

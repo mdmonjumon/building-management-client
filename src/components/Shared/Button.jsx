@@ -1,6 +1,7 @@
 import React from "react";
+import { ImSpinner9 } from "react-icons/im";
 
-const Button = ({ label, onclick }) => {
+const Button = ({ label, onclick, isLoading=false }) => {
   return (
     <button
       onClick={onclick}
@@ -8,7 +9,7 @@ const Button = ({ label, onclick }) => {
       duration-600 ease-in-out
       "
     >
-      {label}
+      {isLoading ? <ImSpinner9 size={25} className="animate-spin" /> : label}
     </button>
   );
 };

@@ -1,26 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const ApartmentCard = ({ apartment }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { apartmentImage, apartmentNo, blockName, floorNo, rent, _id } =
     apartment;
 
   const handleAgreement = async () => {
-    if (!user) {
+    setIsLoading(true);
+    if (!user && !user?.email) {
       return navigate("/login");
     }
     const agreementInfo = {
+      userName: user?.displayName,
+      userEmail: user?.email,
       floorNo,
       blockName,
       apartmentNo,
       rent,
-      apartmentId: _id
     };
+
+    try {
+      const { data } = await axiosSecure.post("/agreement", agreementInfo);
+      if (data.insertedId) {
+        toast.success(`Agreement success! Apartment No: ${apartmentNo}`);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message)
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <div>
@@ -43,7 +60,11 @@ const ApartmentCard = ({ apartment }) => {
           </p>
 
           <div className="card-actions justify-end">
-            <Button onclick={handleAgreement} label="Agreement"></Button>
+            <Button
+              isLoading={isLoading}
+              onclick={handleAgreement}
+              label="Agreement"
+            ></Button>
           </div>
         </div>
       </div>

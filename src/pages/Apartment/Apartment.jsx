@@ -12,7 +12,6 @@ const Apartment = () => {
   const axiosPublic = useAxiosPublic();
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
-  const [resultText, setResultText] = useState(false)
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["allApartments"],
@@ -42,7 +41,6 @@ const Apartment = () => {
     if (!min) return toast.error("Minimum value can not be empty or 0");
     if (!max) return toast.error("Maximum value can not be empty or 0");
     refetch();
-    setResultText(true)
   };
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
@@ -50,9 +48,7 @@ const Apartment = () => {
   return (
     <Container>
       <div className="mt-28">
-        <div
-          className="flex flex-col md:flex-row justify-end items-center gap-5"
-        >
+        <div className="flex flex-col md:flex-row justify-end items-center gap-5">
           <fieldset className="fieldset">
             {/* min */}
             <input
@@ -61,8 +57,7 @@ const Apartment = () => {
               placeholder="Min"
               required
               name="min"
-              onChange={(e)=>setMin(parseInt(e.target.value))}
-
+              onChange={(e) => setMin(parseInt(e.target.value))}
             />
           </fieldset>
 
@@ -74,12 +69,11 @@ const Apartment = () => {
               placeholder="Max"
               required
               name="max"
-              onChange={(e)=>setMax(parseInt(e.target.value))}
+              onChange={(e) => setMax(parseInt(e.target.value))}
             />
           </fieldset>
           <Button onclick={handleSearchByRent} label="Search by Rent"></Button>
         </div>
-        <p className={`text-end text-lg text-gray-700 mt-5 ${resultText?"":"hidden"}`}>{apartments.length} Result found</p>
       </div>
 
       <div className="my-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
