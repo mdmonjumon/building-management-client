@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 // eslint-disable-next-line no-unused-vars
-const MenuItem = ({ label, icon: Icon, size, address }) => {
+const MenuItem = ({ label, icon: Icon, size=20, address }) => {
 
   return (
     <div className="mx-3">

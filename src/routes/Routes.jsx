@@ -8,6 +8,8 @@ import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import Announcement from "../pages/Dashboard/Common/Announcement";
 import UserProfile from "../pages/Dashboard/User/UserProfile/UserProfile";
+import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
+import MakePayment from "../pages/Dashboard/Member/MakePayment";
 
 const router = createBrowserRouter([
   {
@@ -24,22 +26,36 @@ const router = createBrowserRouter([
       },
     ],
   },
-  
+
   // dashboard layout start here
   {
     path: "/dashboard",
-    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-    children:[
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path:'/dashboard',
-        element:<UserProfile></UserProfile>
+        path: "/dashboard",
+        element: <UserProfile></UserProfile>,
+      },
+
+      // member menu start here
+      {
+        path: "/dashboard/member-profile",
+        element: <MemberProfile></MemberProfile>,
       },
       {
-        path:'announcements',
-        element:<Announcement></Announcement>
-      }
-    ]
-
+        path: "make-payment",
+        element:<MakePayment></MakePayment>
+      },
+      // member menu end here
+      {
+        path: "announcements",
+        element: <Announcement></Announcement>,
+      },
+    ],
   },
   // dashboard layout end here
   {

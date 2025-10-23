@@ -4,10 +4,12 @@ import UserMenu from "./Menu/UserMenu";
 import { Link } from "react-router-dom";
 import { MdOutlineAnnouncement } from "react-icons/md";
 import MenuItem from "../Shared/MenuItem/MenuItem";
+import MemberMenu from "./Menu/MemberMenu";
+import AdminMenu from "./Menu/AdminMenu";
 
 const Sidebar = () => {
   return (
-    <div className="w-72 h-[100vh] pt-10 bg-gray-100">
+    <div className="w-64 h-[100vh] pt-10 bg-gray-100">
       <div className="flex justify-center">
         <Link to="/">
           <img className="w-20 rounded-full" src={sideLogo} alt="" />
@@ -18,6 +20,14 @@ const Sidebar = () => {
       <div>
         {/* menu for users */}
         <UserMenu></UserMenu>
+
+
+        {/* menu for member */}
+          <MemberMenu></MemberMenu>
+
+          {/* menu for admin */}
+          <AdminMenu></AdminMenu>
+
 
         {/* Announcements */}
         <MenuItem
