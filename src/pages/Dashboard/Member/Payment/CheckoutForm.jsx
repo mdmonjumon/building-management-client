@@ -4,6 +4,7 @@ import Button from "../../../../components/Shared/Button";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ couponId, paymentInfo }) => {
   const axiosSecure = useAxiosSecure();
@@ -12,6 +13,7 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
   const { user } = useAuth();
   const [error, setError] = useState();
   const [paymentSecret, setPaymentSecret] = useState(null);
+  const navigate = useNavigate()
 
   const intentData = useMemo(() => {
     return { couponId, apartmentId: paymentInfo?.apartmentId };
@@ -22,9 +24,6 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
       .post("/payment-intent", intentData)
       .then((res) => setPaymentSecret(res?.data?.clientSecret));
   }, [intentData, axiosSecure]);
-
-  console.log(paymentInfo?.date?.value);
-  console.log(`${1 + new Date().getMonth()}-${new Date().getFullYear()}`);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,8 +77,7 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
         };
         await axiosSecure.post("/payments", payment);
         toast.success(`${paymentInfo?.date?.label} Payment success`);
-        e.target.reset();
-        card.reset();
+        navigate('/dashboard/payment-history')
       }
     }
   };

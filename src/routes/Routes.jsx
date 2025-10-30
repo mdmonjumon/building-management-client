@@ -11,6 +11,7 @@ import UserProfile from "../pages/Dashboard/User/UserProfile/UserProfile";
 import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
 import MakePayment from "../pages/Dashboard/Member/MakePayment";
 import PaymentPage from "../pages/Dashboard/Member/PaymentPage";
+import PaymentHistory from "../pages/Dashboard/Member/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:"payment",
         element:<PaymentPage></PaymentPage>
+      },
+      {
+        path:"payment-history",
+        element:<PaymentHistory></PaymentHistory>
       },
       // member menu end here
       {
