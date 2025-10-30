@@ -1,9 +1,10 @@
 import React from "react";
 import { ImSpinner9 } from "react-icons/im";
 
-const Button = ({ label, onclick, isLoading=false }) => {
+const Button = ({ label, onclick, isLoading=false, disabled }) => {
   return (
     <button
+    disabled={disabled}
       onClick={onclick}
       className="border px-5 py-2 text-lg rounded bg-slate-600 text-white cursor-pointer hover:bg-slate-500 
       duration-600 ease-in-out

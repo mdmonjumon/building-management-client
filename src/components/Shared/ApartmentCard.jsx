@@ -26,6 +26,7 @@ const ApartmentCard = ({ apartment }) => {
       blockName,
       apartmentNo,
       rent,
+      apartmentId: _id,
     };
 
     try {
@@ -34,7 +35,7 @@ const ApartmentCard = ({ apartment }) => {
         toast.success(`Agreement success! Apartment No: ${apartmentNo}`);
       }
     } catch (error) {
-      toast.error(error?.response?.data?.message)
+      toast.error(error?.response?.data?.message);
     } finally {
       setIsLoading(false);
     }

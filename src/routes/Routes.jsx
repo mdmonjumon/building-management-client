@@ -10,6 +10,7 @@ import Announcement from "../pages/Dashboard/Common/Announcement";
 import UserProfile from "../pages/Dashboard/User/UserProfile/UserProfile";
 import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
 import MakePayment from "../pages/Dashboard/Member/MakePayment";
+import PaymentPage from "../pages/Dashboard/Member/PaymentPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "make-payment",
         element:<MakePayment></MakePayment>
+      },
+      {
+        path:"payment",
+        element:<PaymentPage></PaymentPage>
       },
       // member menu end here
       {

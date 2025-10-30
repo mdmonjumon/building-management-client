@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import Button from "../../../components/Shared/Button";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const animatedComponents = makeAnimated();
 
 const MakePayment = () => {
@@ -124,7 +125,12 @@ const MakePayment = () => {
           />
         </fieldset>
       </div>
-      <Button label={"Pay Rent"}></Button>
+      <Link
+        to="/dashboard/payment"
+        state={{ paymentData: { ...paymentInfo, date: select?.label } }}
+      >
+        <Button label={"Pay Rent"}></Button>
+      </Link>
     </div>
   );
 };
