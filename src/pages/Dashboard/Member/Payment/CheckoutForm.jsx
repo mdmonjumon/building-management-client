@@ -3,10 +3,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Button from "../../../../components/Shared/Button";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const CheckoutForm = ({ couponId, paymentInfo }) => {
   const axiosSecure = useAxiosSecure();
-  console.log(couponId, paymentInfo);
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -23,9 +23,12 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
       .then((res) => setPaymentSecret(res?.data?.clientSecret));
   }, [intentData, axiosSecure]);
 
+  console.log(paymentInfo?.date?.value);
+  console.log(`${1 + new Date().getMonth()}-${new Date().getFullYear()}`);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (!stripe || !elements) {
       return;
     }
@@ -70,9 +73,13 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
         const payment = {
           name: user?.displayName,
           email: user?.email,
+          date: paymentInfo?.date,
           transactionId: paymentIntent?.id,
         };
         await axiosSecure.post("/payments", payment);
+        toast.success(`${paymentInfo?.date?.label} Payment success`);
+        e.target.reset();
+        card.reset();
       }
     }
   };

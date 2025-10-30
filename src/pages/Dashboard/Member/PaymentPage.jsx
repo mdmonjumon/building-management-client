@@ -17,7 +17,7 @@ const PaymentPage = () => {
     state: { paymentData },
   } = useLocation();
 
-  
+  console.log(paymentData);
   const [totalRent, setTotalRent] = useState(paymentData?.rent);
 
   const handleVerifyCoupon = async (e) => {

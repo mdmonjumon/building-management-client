@@ -127,7 +127,7 @@ const MakePayment = () => {
       </div>
       <Link
         to="/dashboard/payment"
-        state={{ paymentData: { ...paymentInfo, date: select?.label } }}
+        state={{ paymentData: { ...paymentInfo, date: select } }}
       >
         <Button label={"Pay Rent"}></Button>
       </Link>
