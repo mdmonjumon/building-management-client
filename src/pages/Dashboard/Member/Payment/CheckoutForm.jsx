@@ -13,7 +13,7 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
   const { user } = useAuth();
   const [error, setError] = useState();
   const [paymentSecret, setPaymentSecret] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const intentData = useMemo(() => {
     return { couponId, apartmentId: paymentInfo?.apartmentId };
@@ -27,7 +27,7 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!stripe || !elements) {
       return;
     }
@@ -77,7 +77,7 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
         };
         await axiosSecure.post("/payments", payment);
         toast.success(`${paymentInfo?.date?.label} Payment success`);
-        navigate('/dashboard/payment-history')
+        navigate("/dashboard/payment-history");
       }
     }
   };
@@ -85,22 +85,25 @@ const CheckoutForm = ({ couponId, paymentInfo }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: "16px",
-                color: "#424770",
-                "::placeholder": {
-                  color: "#aab7c4",
+        <div className="bg-slate-100 rounded">
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  lineHeight: "50px",
+                  fontSize: "16px",
+                  color: "#424770",
+                  "::placeholder": {
+                    color: "#aab7c4",
+                  },
+                },
+                invalid: {
+                  color: "#9e2146",
                 },
               },
-              invalid: {
-                color: "#9e2146",
-              },
-            },
-          }}
-        />
+            }}
+          />
+        </div>
         <p className="text-rose-500 text-sm mt-2">{error && error}</p>
         <div className="my-4">
           <Button disabled={!stripe} label={"Pay"}></Button>

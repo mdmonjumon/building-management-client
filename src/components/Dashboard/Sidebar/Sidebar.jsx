@@ -9,10 +9,10 @@ import AdminMenu from "./Menu/AdminMenu";
 
 const Sidebar = () => {
   return (
-    <div className="w-64 h-[100vh] pt-10 bg-gray-100">
+    <div className="lg:max-w-64 rounded-l-2xl h-[100vh]  pt-10 bg-gray-700 text-white/70 relative">
       <div className="flex justify-center">
         <Link to="/">
-          <img className="w-20 rounded-full" src={sideLogo} alt="" />
+          <img className="w-10 lg:w-20 rounded-full mx-2" src={sideLogo} alt="" />
         </Link>
       </div>
 

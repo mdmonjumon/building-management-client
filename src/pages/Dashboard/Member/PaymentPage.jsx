@@ -46,13 +46,15 @@ const PaymentPage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleVerifyCoupon}>
+    <div className="flex flex-col justify-center items-center h-full p-[var(--dashboard-padding)] mt-10">
+      <form onSubmit={handleVerifyCoupon}
+      className="lg:w-1/2 md:w-3/4 w-full"
+      >
         <fieldset className="fieldset mb-2">
           <legend className="fieldset-legend text-lg">Coupon Code</legend>
           <input
             type="text"
-            className="input focus:outline-0"
+            className="input focus:outline-0 w-full"
             placeholder="Type your coupon here"
             name="coupon"
             required
@@ -61,7 +63,7 @@ const PaymentPage = () => {
         <Button label={"Apply Coupon"}></Button>
       </form>
 
-      <div className="mt-10 py-5 px-5 bg-slate-100 rounded mb-3">
+      <div className="mt-10 py-5 px-5 bg-slate-100 rounded mb-3 lg:w-1/2 md:w-3/4 w-full">
         <div className="border-b border-gray-400 flex items-center justify-between">
           <p className="text-lg">Rent:</p>
           <p className="text-lg font-medium">${paymentData?.rent}</p>
@@ -76,7 +78,7 @@ const PaymentPage = () => {
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 lg:w-1/2 md:w-3/4 w-full mb-10">
         <Elements stripe={stripePromise}>
           <CheckoutForm
             couponId={couponId}

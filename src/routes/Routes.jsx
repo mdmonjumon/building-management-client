@@ -12,6 +12,9 @@ import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
 import MakePayment from "../pages/Dashboard/Member/MakePayment";
 import PaymentPage from "../pages/Dashboard/Member/PaymentPage";
 import PaymentHistory from "../pages/Dashboard/Member/PaymentHistory";
+import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
+import MakeAnnouncement from "../pages/Dashboard/Admin/MakeAnnouncement";
+import AgreementRequests from "../pages/Dashboard/Admin/AgreementRequests";
 
 const router = createBrowserRouter([
   {
@@ -50,21 +53,36 @@ const router = createBrowserRouter([
       },
       {
         path: "make-payment",
-        element:<MakePayment></MakePayment>
+        element: <MakePayment></MakePayment>,
       },
       {
-        path:"payment",
-        element:<PaymentPage></PaymentPage>
+        path: "payment",
+        element: <PaymentPage></PaymentPage>,
       },
       {
-        path:"payment-history",
-        element:<PaymentHistory></PaymentHistory>
+        path: "payment-history",
+        element: <PaymentHistory></PaymentHistory>,
       },
       // member menu end here
       {
         path: "announcements",
         element: <Announcement></Announcement>,
       },
+
+      // admin menu start here
+      {
+        path: "/dashboard/admin-profile",
+        element: <AdminProfile></AdminProfile>,
+      },
+      {
+        path: "make-announcement",
+        element: <MakeAnnouncement />,
+      },
+      {
+        path: "agreement-request",
+        element: <AgreementRequests />,
+      },
+      // admin menu end here
     ],
   },
   // dashboard layout end here

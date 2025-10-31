@@ -7,8 +7,8 @@ const Profile = ({ info = {} }) => {
   const { floorNo, blockName, apartmentNo, rent, status, date } = info;
 
   return (
-    <div className="shadow-2xl rounded-2xl">
-      <div className="h-64 bg-gradient-to-r from-indigo-500/60 via-purple-500/60 to-pink-500/60 rounded-t-2xl"></div>
+    <div>
+      <div className="h-64 bg-gradient-to-r from-indigo-500/60 via-purple-500/60 to-pink-500/60 rounded-r-2xl"></div>
 
       <div className="flex flex-col items-center justify-center">
         <img

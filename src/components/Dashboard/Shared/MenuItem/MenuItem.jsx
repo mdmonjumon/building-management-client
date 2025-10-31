@@ -11,7 +11,7 @@ const MenuItem = ({ label, icon: Icon, size=20, address }) => {
         className={`flex items-center gap-2 text-lg py-2 px-3 hover:bg-gray-300 hover:text-gray-600 hover:rounded`}
       >
         <Icon size={size} />
-        {label}
+        <span>{label}</span>
       </NavLink>
     </div>
   );

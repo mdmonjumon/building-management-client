@@ -16,7 +16,7 @@ const PaymentHistory = () => {
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   return (
-    <div>
+    <div className="p-[var(--dashboard-padding)] mt-10">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

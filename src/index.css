@@ -17,3 +17,20 @@ body{
 @keyframes spin-border {
   100% { transform: rotate(360deg); }
 }
+
+
+:root {
+  --dashboard-padding: 10px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --dashboard-padding: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --dashboard-padding: 40px;
+  }
+}
